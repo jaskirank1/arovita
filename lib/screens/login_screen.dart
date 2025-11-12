@@ -53,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const SizedBox(height: 40),
 
-                // 🔹 Logo
+                // Logo
                 SvgPicture.asset(
                   'assets/images/logo.svg',
                   height: 25.66,
@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 24),
 
-                // 🔹 Login Card
+                // Login Card
                 Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         const SizedBox(height: 8),
 
-                        // 📱 Phone Input
+                        // Phone Input
                         Container(
                           height: 50,
                           decoration: BoxDecoration(
@@ -206,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         const SizedBox(height: 20),
 
-                        // 🟦 Divider with "or"
+                        // Divider with "or"
                         Row(
                           children: const [
                             Expanded(
@@ -237,7 +237,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         const SizedBox(height: 20),
 
-                        // 📧 Email Input
+                        // Email Input
                         Container(
                           height: 50,
                           decoration: BoxDecoration(
@@ -274,7 +274,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                         const SizedBox(height: 24),
 
-                        // 🔘 Continue Button
+                        // Continue Button
                         SizedBox(
                           width: double.infinity,
                           height: 48,
@@ -290,7 +290,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             onPressed: isButtonEnabled
                                 ? () {
-                                    // your continue logic
+                                    // logic after clicking continue button 
                                   }
                                 : null,
                             child: const Text(
@@ -311,7 +311,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 const SizedBox(height: 20),
 
-                // 🔹 Bottom Section (Terms and Privacy)
+                // Bottom Section (Terms and Privacy)
                 Column(
                   children: const [
                     Text(
