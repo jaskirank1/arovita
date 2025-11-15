@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+import '../../utils/app_section.dart'; 
+import 'widgets/home_header.dart';
+import 'widgets/notification_banner.dart';
+import 'widgets/heart_rate_card.dart';
+import 'widgets/consult_doctor_section.dart';
+import '../../core/widgets/bottom_nav_bar.dart';
+import './widgets/family_health_section.dart';
+import './widgets/daily_activity_summary_section.dart';
+import './widgets/coming_soon_section.dart';
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFF5F3FF),
+      bottomNavigationBar: const BottomNavBar(currentIndex: 0),
+
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            SizedBox(height: 16),
+
+            AppSection(child: HomeHeader()),
+            AppSection(child: NotificationBanner()),
+            AppSection(child: HeartRateCard()),
+            AppSection(child: ConsultDoctorSection()),
+            AppSection(child: FamilyHealthSection()),
+            AppSection(child: DailyActivitySummary()),
+            AppSection(child: ComingSoonSection()),
+
+            SizedBox(height: 40),
+          ],
+        ),
+      ),
+    );
+  }
+}

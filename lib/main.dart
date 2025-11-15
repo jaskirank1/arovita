@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'screens/login_screen.dart';
+import 'screens/home/home_page.dart';
+import 'screens/appointments/appointment_page.dart';
+import 'screens/chat/chat_page.dart';
+import 'screens/profile/profile_page.dart';
+import 'screens/activity/activity_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +14,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+
+      routes: {
+        '/home': (_) => const HomePage(),
+        '/appointments': (_) => const AppointmentPage(),
+        '/chat': (_) => const ChatPage(),
+        '/profile': (_) => const ProfilePage(),
+        '/activity': (_) => const ActivityPage(),
+      },
+
+      initialRoute: '/home',
     );
   }
 }
