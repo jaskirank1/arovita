@@ -18,16 +18,22 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F3FF),
+
+      // Bottom navigation bar shared across main screens
       bottomNavigationBar: const BottomNavBar(currentIndex: 0),
 
       body: Stack(
         children: [
-          // MAIN SCROLL CONTENT
+          // =======================================
+          // MAIN SCROLLABLE HOME CONTENT
+          // Contains header, banners, cards, sections
+          // =======================================
           SingleChildScrollView(
             child: Column(
               children: const [
                 SizedBox(height: 16),
 
+                // Each section wrapped inside AppSection for consistent spacing
                 AppSection(child: HomeHeader()),
                 AppSection(child: NotificationBanner()),
                 AppSection(child: HeartRateCard()),
@@ -42,12 +48,10 @@ class HomePage extends StatelessWidget {
             ),
           ),
 
-          // FLOATING MESSAGE BUTTON
+          // Floating chat/message button above scroll content
           FloatingMessageButton(
-            unreadCount: 2,     // dynamic count of messages
-            onTap: () {
-              Navigator.pushNamed(context, '/chat');
-            },
+            unreadCount: 2,
+            onTap: () => Navigator.pushNamed(context, '/chat'),
           ),
         ],
       ),

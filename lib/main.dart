@@ -9,6 +9,7 @@ import 'screens/login/login_screen.dart';
 import 'screens/otp/otp_screen.dart';
 
 void main() {
+  // Entry point — launches the Flutter application
   runApp(const MyApp());
 }
 
@@ -19,29 +20,34 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        // Initialize responsive utility based on device size
         Responsive.init(context);
 
         return MaterialApp(
           debugShowCheckedModeBanner: false,
 
-          // ---------- ROUTES ----------
-         routes: {
-          '/login': (_) => const LoginScreen(),
+          // ===============================
+          // APP ROUTING CONFIGURATION
+          // Defines all top-level pages of the app
+          // ===============================
+          routes: {
+            '/login': (_) => const LoginScreen(),
 
-          // OTP route now expects arguments
-          '/otp': (context) {
-            final args = ModalRoute.of(context)!.settings.arguments as String;
-            return OtpScreen(phoneOrEmail: args);
+            // OTP screen receives phone/email as argument
+            '/otp': (context) {
+              final args = ModalRoute.of(context)!.settings.arguments as String;
+              return OtpScreen(phoneOrEmail: args);
+            },
+
+            // Main navigation screens
+            '/home': (_) => const HomePage(),
+            '/appointments': (_) => const AppointmentPage(),
+            '/chat': (_) => const ChatPage(),
+            '/profile': (_) => const ProfilePage(),
+            '/activity': (_) => const ActivityPage(),
           },
 
-          '/home': (_) => const HomePage(),
-          '/appointments': (_) => const AppointmentPage(),
-          '/chat': (_) => const ChatPage(),
-          '/profile': (_) => const ProfilePage(),
-          '/activity': (_) => const ActivityPage(),
-        },
-
-          // App always starts at login page
+          // App starts here by default
           initialRoute: '/login',
         );
       },

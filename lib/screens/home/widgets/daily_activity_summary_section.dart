@@ -3,23 +3,22 @@ import '../../../models/activity_data.dart';
 import './activity_card.dart';
 import '../../../utils/responsive.dart';
 
-class DailyActivitySummary extends StatelessWidget {
+class DailyActivitySummary extends StatefulWidget {
   const DailyActivitySummary({super.key});
 
-  // Array of data to be displayed in the cards.
   static const List<ActivityData> _activityData = [
     ActivityData(
       value: "8,432",
       label: "Steps",
       icon: Icons.directions_walk,
-      iconColor: Color(0xFF10B981), 
+      iconColor: Color(0xFF10B981),
       progress: 0.75,
     ),
     ActivityData(
       value: "7.5h",
       label: "Sleep",
       icon: Icons.nightlight_round,
-      iconColor: Color(0xFF7C3AED), 
+      iconColor: Color(0xFF7C3AED),
       progress: 0.82,
     ),
     ActivityData(
@@ -32,10 +31,16 @@ class DailyActivitySummary extends StatelessWidget {
   ];
 
   @override
+  State<DailyActivitySummary> createState() => _DailyActivitySummaryState();
+}
+
+class _DailyActivitySummaryState extends State<DailyActivitySummary>
+    with SingleTickerProviderStateMixin {
+  bool expanded = false;
+
+  @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    
-    // This controls the progress bar visibility (hides below 840px)
     final showProgress = screenWidth >= 840.0;
 
     return Column(
@@ -48,75 +53,99 @@ class DailyActivitySummary extends StatelessWidget {
             fontFamily: "Inter",
             fontWeight: FontWeight.w600,
             fontSize: Responsive.desktopText18,
-            height: 28 / 18,
-            color: Color(0xFF1E293B),
+            color: const Color(0xFF1E293B),
           ),
         ),
 
         const SizedBox(height: 16),
 
-        // Card Container
-        Container(
-          width: screenWidth,
-          padding: const EdgeInsets.all(24),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: const [
-              BoxShadow(
-                color: Color(0x1A000000),
-                blurRadius: 2,
-                offset: Offset(0, 1),
-              ),
-            ],
-          ),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Card 1
-                  Expanded(
-                    child: ActivityCard(
-                      data: _activityData[0],
-                      screenWidth: screenWidth, 
-                      showProgress: showProgress,
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  // Card 2
-                  Expanded(
-                    child: ActivityCard(
-                      data: _activityData[1],
-                      screenWidth: screenWidth, 
-                      showProgress: showProgress,
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  // Card 3
-                  Expanded(
-                    child: ActivityCard(
-                      data: _activityData[2],
-                      screenWidth: screenWidth, 
-                      showProgress: showProgress,
-                    ),
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: 16),
-
-              // View More Text
-              Text(
-                "View More",
-                style: TextStyle(
-                  fontFamily: "Inter",
-                  fontWeight: FontWeight.w500,
-                  fontSize: Responsive.desktopText14,
-                  color: Colors.purple.shade600,
+        // EXPANDABLE WHITE CONTAINER
+        AnimatedSize(
+          duration: const Duration(milliseconds: 250),
+          curve: Curves.easeInOut,
+          child: Container(
+            width: screenWidth,
+            padding: const EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: const [
+                BoxShadow(
+                  color: Color(0x1A000000),
+                  blurRadius: 2,
+                  offset: Offset(0, 1),
                 ),
-              ),
-            ],
+              ],
+            ),
+
+            child: Column(
+              children: [
+                // 3 ACTIVITY CARDS
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: ActivityCard(
+                        data: DailyActivitySummary._activityData[0],
+                        screenWidth: screenWidth,
+                        showProgress: showProgress,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: ActivityCard(
+                        data: DailyActivitySummary._activityData[1],
+                        screenWidth: screenWidth,
+                        showProgress: showProgress,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: ActivityCard(
+                        data: DailyActivitySummary._activityData[2],
+                        screenWidth: screenWidth,
+                        showProgress: showProgress,
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 16),
+
+                // VIEW MORE / VIEW LESS
+                GestureDetector(
+                  onTap: () {
+                    setState(() => expanded = !expanded);
+                  },
+                  child: Text(
+                    expanded ? "View Less" : "View More",
+                    style: TextStyle(
+                      fontFamily: "Inter",
+                      fontWeight: FontWeight.w500,
+                      fontSize: Responsive.desktopText14,
+                      color: Colors.purple.shade600,
+                    ),
+                  ),
+                ),
+
+                // EXTRA CONTENT WHEN EXPANDED
+                if (expanded) ...[
+                  const SizedBox(height: 20),
+
+                  // Sample content 
+                  Text(
+                    "More detailed activity insights will appear here...",
+                    style: TextStyle(
+                      fontFamily: "Inter",
+                      fontSize: Responsive.desktopText14,
+                      color: Colors.grey.shade700,
+                    ),
+                  ),
+
+                  const SizedBox(height: 16),
+                ],
+              ],
+            ),
           ),
         ),
       ],

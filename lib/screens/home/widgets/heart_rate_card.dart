@@ -25,8 +25,16 @@ class HeartRateCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
-          BoxShadow(color: Color(0x1A000000), blurRadius: 15, offset: Offset(0, 10)),
-          BoxShadow(color: Color(0x1A000000), blurRadius: 6, offset: Offset(0, 4)),
+          BoxShadow(
+            color: Color(0x1A000000),
+            blurRadius: 15,
+            offset: Offset(0, 10),
+          ),
+          BoxShadow(
+            color: Color(0x1A000000),
+            blurRadius: 6,
+            offset: Offset(0, 4),
+          ),
         ],
       ),
       child: Column(
@@ -71,7 +79,10 @@ class HeartRateCard extends StatelessWidget {
                       ),
                       const SizedBox(width: 12),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
                         decoration: BoxDecoration(
                           color: const Color(0xFF16A34A),
                           borderRadius: BorderRadius.circular(999),
@@ -91,11 +102,7 @@ class HeartRateCard extends StatelessWidget {
               ),
 
               // RIGHT (empty graph box)
-              Container(
-                width: 128,
-                height: 64,
-                color: const Color(0xFFF1F5F9),
-              ),
+              Container(width: 128, height: 64, color: const Color(0xFFF1F5F9)),
             ],
           ),
           const SizedBox(height: 10),
@@ -110,20 +117,26 @@ class HeartRateCard extends StatelessWidget {
                   color: const Color(0xFF64748B),
                 ),
               ),
-              Container(
-                height: 35,
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF7C3AED),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  "Measure now",
-                  style: TextStyle(
-                    fontSize: Responsive.desktopText16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
+              InkWell(
+                onTap: () {
+                  print("Measure now button clicked");
+                },
+                borderRadius: BorderRadius.circular(8),
+                child: Container(
+                  height: 35,
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF7C3AED),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Measure now",
+                    style: TextStyle(
+                      fontSize: Responsive.desktopText16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
@@ -143,8 +156,16 @@ class HeartRateCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
-          BoxShadow(color: Color(0x1A000000), blurRadius: 15, offset: Offset(0, 10)),
-          BoxShadow(color: Color(0x1A000000), blurRadius: 6, offset: Offset(0, 4)),
+          BoxShadow(
+            color: Color(0x1A000000),
+            blurRadius: 15,
+            offset: Offset(0, 10),
+          ),
+          BoxShadow(
+            color: Color(0x1A000000),
+            blurRadius: 6,
+            offset: Offset(0, 4),
+          ),
         ],
       ),
       child: Column(
@@ -164,7 +185,10 @@ class HeartRateCard extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: const Color(0xFF16A34A),
                   borderRadius: BorderRadius.circular(9999),
@@ -228,7 +252,7 @@ class HeartRateCard extends StatelessWidget {
           // THIRD ROW – Button
           SizedBox(
             width: double.infinity,
-            height: Responsive.buttonHeight+3,
+            height: Responsive.buttonHeight + 3,
             child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF7C3AED),

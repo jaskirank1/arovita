@@ -134,7 +134,12 @@ class ConsultDoctorSection extends StatelessWidget {
           ),
 
           const SizedBox(height: 16),
-          ConsultButton(isMobile: isMobile),
+          ConsultButton(
+            isMobile: isMobile,
+            onTap: () {
+              print("Tele-consultation button clicked!");
+            },
+          ),
         ],
       ),
     );
