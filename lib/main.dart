@@ -7,6 +7,7 @@ import 'screens/activity/activity_page.dart';
 import 'utils/responsive.dart';
 import 'screens/login/login_screen.dart';
 import 'screens/otp/otp_screen.dart';
+import 'screens/personalize/personalize_card.dart';
 
 void main() {
   // Entry point — launches the Flutter application
@@ -38,6 +39,8 @@ class MyApp extends StatelessWidget {
               final args = ModalRoute.of(context)!.settings.arguments as String;
               return OtpScreen(phoneOrEmail: args);
             },
+
+            '/personalize': (_) => const PersonalizeCard(),
 
             // Main navigation screens
             '/home': (_) => const HomePage(),

@@ -18,8 +18,10 @@ class OtpVerificationCard extends StatefulWidget {
 }
 
 class _OtpVerificationCardState extends State<OtpVerificationCard> {
-  final List<TextEditingController> _otpControllers =
-      List.generate(4, (_) => TextEditingController());
+  final List<TextEditingController> _otpControllers = List.generate(
+    4,
+    (_) => TextEditingController(),
+  );
 
   bool isOtpComplete = false;
 
@@ -132,7 +134,7 @@ class _OtpVerificationCardState extends State<OtpVerificationCard> {
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
 
@@ -172,8 +174,9 @@ class _OtpVerificationCardState extends State<OtpVerificationCard> {
 
                           // UPDATE BUTTON STATE
                           setState(() {
-                            isOtpComplete = _otpControllers
-                                .every((c) => c.text.isNotEmpty);
+                            isOtpComplete = _otpControllers.every(
+                              (c) => c.text.isNotEmpty,
+                            );
                           });
                         },
                       ),
@@ -215,7 +218,11 @@ class _OtpVerificationCardState extends State<OtpVerificationCard> {
 
               // VERIFY BUTTON
               GestureDetector(
-                onTap: isOtpComplete ? widget.onVerify : null,
+                onTap: isOtpComplete
+                    ? () {
+                        Navigator.pushNamed(context, "/personalize");
+                      }
+                    : null,
                 child: Container(
                   width: buttonWidth,
                   height: Responsive.buttonHeight + 6,
