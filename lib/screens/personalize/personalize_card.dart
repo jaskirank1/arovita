@@ -55,7 +55,7 @@ class _PersonalizeCardState extends State<PersonalizeCard> {
     ).showSnackBar(const SnackBar(content: Text("Profile saved")));
 
     Future.delayed(const Duration(milliseconds: 500), () {
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/lifestyle');
     });
   }
 
@@ -142,12 +142,12 @@ class _PersonalizeCardState extends State<PersonalizeCard> {
                     children: [
                       CircleAvatar(
                         radius: avatarRadius,
-                        backgroundColor: Colors.black, // black background
+                        backgroundColor: Colors.black,
                         child: Icon(
                           Icons.person,
                           size: iconSize,
                           color:
-                              Colors.white, // white icon looks better on black
+                              Colors.white,
                         ),
                       ),
                       SizedBox(height: 8),
@@ -339,7 +339,7 @@ class _PersonalizeCardState extends State<PersonalizeCard> {
                               .click,
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.pushReplacementNamed(context, '/home');
+                              Navigator.pushReplacementNamed(context, '/lifestyle');
                             },
                             child: Text(
                               "Skip for now",

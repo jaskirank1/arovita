@@ -8,9 +8,9 @@ import 'utils/responsive.dart';
 import 'screens/login/login_screen.dart';
 import 'screens/otp/otp_screen.dart';
 import 'screens/personalize/personalize_card.dart';
-
+import 'screens/medical_background/medical_background_screen.dart';
+import 'screens/lifestyle/lifestyle_page.dart';
 void main() {
-  // Entry point — launches the Flutter application
   runApp(const MyApp());
 }
 
@@ -41,6 +41,10 @@ class MyApp extends StatelessWidget {
             },
 
             '/personalize': (_) => const PersonalizeCard(),
+
+            '/lifestyle': (_) => const LifestylePage(),
+
+            '/medical_background': (_) => const MedicalBackgroundScreen(),
 
             // Main navigation screens
             '/home': (_) => const HomePage(),
